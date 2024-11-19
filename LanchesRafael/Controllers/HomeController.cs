@@ -15,10 +15,11 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        _logger.LogInformation("Página inicial carregada");
         return View();
     }
 
-    public IActionResult Privacy()
+    public IActionResult Demo()
     {
         return View();
     }

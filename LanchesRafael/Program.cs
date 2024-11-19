@@ -1,23 +1,34 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using LanchesRafael.Models.Context;
+using LanchesRafael.Repositories;
+using LanchesRafael.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
-// Add services to the container.
+var builder = WebApplication.CreateBuilder(args);
+
+// Obtendo a string de conexão do appsettings.json
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+// Registrando o AppDbContext como serviço
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
+
+builder.Services.AddTransient<ILancheRepository, LancheRepository>();
+builder.Services.AddTransient<ICategoriaRepository, CategoriaRepository>();
+
+// Outros serviços (como controllers, etc.)
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configuração do pipeline de requisição
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
 
 app.MapControllerRoute(
