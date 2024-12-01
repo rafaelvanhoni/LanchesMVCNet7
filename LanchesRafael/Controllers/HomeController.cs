@@ -16,6 +16,8 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         _logger.LogInformation("Página inicial carregada");
+
+        TempData["Nome"] = "Rafael";
         return View();
     }
 

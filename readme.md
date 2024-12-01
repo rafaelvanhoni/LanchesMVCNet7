@@ -58,7 +58,7 @@ Para executar este projeto localmente, siga as etapas:
 
 1. Clone este repositório:
    ```bash
-   git clone https://github.com/rafaelvanhoni/lanches-rafael.git
+   git clone https://github.com/rafaelvanhoni/LanchesMVCNet7.git
 
 2. **Instale as dependências**  
    Certifique-se de ter o SDK do .NET Core 7.0 instalado. Acesse a [documentação oficial](https://dotnet.microsoft.com/download/dotnet/7.0) para baixar e instalar a versão necessária.
